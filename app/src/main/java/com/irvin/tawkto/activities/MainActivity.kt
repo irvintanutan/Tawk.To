@@ -4,15 +4,20 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuItemCompat.getActionView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.irvin.tawkto.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),
     androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
+    private lateinit var linearLayoutManager: LinearLayoutManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        linearLayoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = linearLayoutManager 
     }
 
 
@@ -30,7 +35,6 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        textview.text = newText
         return false;
     }
 }
